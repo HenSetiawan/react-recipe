@@ -44,7 +44,8 @@ function PopularRecipeList() {
 }
 
 const Wraper = styled.section`
-  margin: 4rem 0rem;
+  margin:5rem auto;
+  width: 80%;
 `;
 
 const Card = styled.div`
@@ -58,7 +59,7 @@ const Card = styled.div`
     border-radius: 2rem;
     position: absolute;
     left: 0;
-    display:block;
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;

@@ -1,15 +1,21 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const getPopularRecipe = async () => {
-  try {
-    const response = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
-    );
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log(error);
+  const popularRecipe = localStorage.getItem('popular');
+  if (popularRecipe) {
+    return JSON.parse(popularRecipe);
+  } else {
+    try {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`
+      );
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem('popular', JSON.stringify(data));
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
