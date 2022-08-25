@@ -1,19 +1,20 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getPopularRecipe } from '../services/recipe-services';
+import { getVeganRecipe } from '../services/recipe-services';
 import styled from 'styled-components';
 
-function PopularRecipeList() {
+function VeganRecipeList() {
   const [popularRecipes, setPopularRecipes] = useState([]);
-  const popularRecipeHandler = async () => {
-    const recipe = await getPopularRecipe();
-    setPopularRecipes(recipe.recipes);
+  const recipeHandler = async () => {
+    const recipe = await getVeganRecipe();
+    setPopularRecipes(recipe.results);
   };
   useEffect(() => {
-    popularRecipeHandler();
+    recipeHandler();
   }, []);
   return (
     <div>
+      <Title>Vegan Choice</Title>
       <Wraper>
         {popularRecipes.map((recipe) => {
           return (
@@ -30,14 +31,18 @@ function PopularRecipeList() {
 }
 
 const Wraper = styled.section`
-  margin: 5rem auto;
+  margin: 2rem auto;
   width: 80%;
   padding: 1rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  text-align:center;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
+`;
+
+const Title = styled.h1`
+  text-align: center;
 `;
 
 const Card = styled.div`
@@ -45,7 +50,7 @@ const Card = styled.div`
   position: relative;
   margin-top: 10px;
   border-radius: 1.5rem;
-  
+
   img {
     width: 100%;
     display: block;
@@ -62,7 +67,7 @@ const Card = styled.div`
     font-size: 16px;
     left: 0;
     width: 100%;
-    text-align:center;
+    text-align: center;
   }
 `;
 
@@ -74,4 +79,4 @@ const Gradient = styled.div`
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
-export default PopularRecipeList;
+export default VeganRecipeList;

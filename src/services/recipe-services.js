@@ -19,5 +19,24 @@ const getPopularRecipe = async () => {
   }
 };
 
+const getVeganRecipe = async () => {
+  const veganRecipe = localStorage.getItem('vegetarian');
+  if (veganRecipe) {
+    return JSON.parse(veganRecipe);
+  } else {
+    try {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=${apiKey}&number=20`
+      );
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem('vegetarian', JSON.stringify(data));
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export { getPopularRecipe };
+export { getPopularRecipe, getVeganRecipe };
