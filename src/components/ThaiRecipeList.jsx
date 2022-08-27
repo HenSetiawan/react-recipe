@@ -1,23 +1,23 @@
 import React from 'react';
+import RecipeCard from './RecipeCard';
+import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { getVeganRecipe } from '../services/recipe-services';
-import styled from 'styled-components';
-import RecipeCard from './RecipeCard';
 
-function VeganRecipeList() {
-  const [popularRecipes, setPopularRecipes] = useState([]);
+function ThaiRecipeList() {
+  const [ThaiFoodRecipes, setThaiFoodRecipes] = useState([]);
   const recipeHandler = async () => {
     const recipe = await getVeganRecipe();
-    setPopularRecipes(recipe.results);
+    setThaiFoodRecipes(recipe.results);
   };
   useEffect(() => {
     recipeHandler();
   }, []);
   return (
     <div>
-      <Title>Vegan Choice</Title>
+      <Title>Thai Food</Title>
       <Wraper>
-        {popularRecipes.map((recipe) => {
+        {ThaiFoodRecipes.map((recipe) => {
           return (
             <RecipeCard key={recipe.id}>
               <h3>{recipe.title}</h3>
@@ -45,4 +45,4 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-export default VeganRecipeList;
+export default ThaiRecipeList;
