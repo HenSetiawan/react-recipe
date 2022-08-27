@@ -28,7 +28,7 @@ function PopularRecipeList() {
         >
           {popularRecipes.map((recipe) => {
             return (
-              <SplideSlide>
+              <SplideSlide key={recipe.id}>
                 <Card key={recipe.id}>
                   <h3>{recipe.title}</h3>
                   <img src={recipe.image} alt={recipe.title} />

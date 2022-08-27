@@ -2,22 +2,21 @@ import React from 'react';
 import RecipeCard from './RecipeCard';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { getVeganRecipe } from '../services/recipe-services';
 
-function ThaiRecipeList() {
-  const [ThaiFoodRecipes, setThaiFoodRecipes] = useState([]);
+function RecipeList(props) {
+  const [foodRecipes, setFoodRecipes] = useState([]);
   const recipeHandler = async () => {
-    const recipe = await getVeganRecipe();
-    setThaiFoodRecipes(recipe.results);
+    const recipe = await props.recipeService(props.country);
+    setFoodRecipes(recipe.results);
   };
   useEffect(() => {
     recipeHandler();
-  }, []);
+  }, [foodRecipes]);
   return (
     <div>
-      <Title>Thai Food</Title>
+      <Title>{props.title}</Title>
       <Wraper>
-        {ThaiFoodRecipes.map((recipe) => {
+        {foodRecipes.map((recipe) => {
           return (
             <RecipeCard key={recipe.id}>
               <h3>{recipe.title}</h3>
@@ -45,4 +44,4 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-export default ThaiRecipeList;
+export default RecipeList;

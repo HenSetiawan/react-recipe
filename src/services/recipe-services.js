@@ -19,14 +19,14 @@ const getPopularRecipe = async () => {
   }
 };
 
-const getThaiRecipe = async () => {
+const getCuisineRecipe = async (country) => {
   const thaiRecipe = localStorage.getItem('thai');
   if (thaiRecipe) {
     return JSON.parse(thaiRecipe);
   } else {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?cuisine=thai&apiKey=${apiKey}&number=20`
+        `https://api.spoonacular.com/recipes/complexSearch?cuisine=${country}&apiKey=${apiKey}&number=20`
       );
       const data = await response.json();
       console.log(data);
@@ -58,4 +58,4 @@ const getVeganRecipe = async () => {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export { getPopularRecipe, getVeganRecipe };
+export { getPopularRecipe, getVeganRecipe, getCuisineRecipe };
