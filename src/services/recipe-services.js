@@ -19,6 +19,25 @@ const getPopularRecipe = async () => {
   }
 };
 
+const getThaiRecipe = async () => {
+  const thaiRecipe = localStorage.getItem('thai');
+  if (thaiRecipe) {
+    return JSON.parse(thaiRecipe);
+  } else {
+    try {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?cuisine=thai&apiKey=${apiKey}&number=20`
+      );
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem('thai', JSON.stringify(data));
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
 const getVeganRecipe = async () => {
   const veganRecipe = localStorage.getItem('vegetarian');
   if (veganRecipe) {
@@ -37,7 +56,6 @@ const getVeganRecipe = async () => {
     }
   }
 };
-
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export { getPopularRecipe, getVeganRecipe };
