@@ -18,7 +18,7 @@ function RecipeList(props) {
       <Wraper>
         {foodRecipes.map((recipe) => {
           return (
-            <RecipeCard key={recipe.id}>
+            <RecipeCard key={recipe.id} id={recipe.id}>
               <h3>{recipe.title}</h3>
               <img src={recipe.image} alt={recipe.title} />
             </RecipeCard>
