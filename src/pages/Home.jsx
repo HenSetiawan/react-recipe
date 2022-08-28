@@ -25,6 +25,37 @@ function Home() {
             />
           }
         />
+        <Route
+          path="/italian-food"
+          element={
+            <RecipeList
+              recipeService={getCuisineRecipe}
+              country="Italian"
+              title="Italian Food Recipe"
+            />
+          }
+        />
+
+        <Route
+          path="/korean-food"
+          element={
+            <RecipeList
+              recipeService={getCuisineRecipe}
+              country="Korean"
+              title="Korean Food Recipe"
+            />
+          }
+        />
+        <Route
+          path="/american-food"
+          element={
+            <RecipeList
+              recipeService={getCuisineRecipe}
+              country="American"
+              title="American Food Recipe"
+            />
+          }
+        />
       </Routes>
     </div>
   );

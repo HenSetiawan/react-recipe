@@ -20,7 +20,7 @@ const getPopularRecipe = async () => {
 };
 
 const getCuisineRecipe = async (country) => {
-  const thaiRecipe = localStorage.getItem('thai');
+  const thaiRecipe = localStorage.getItem(country);
   if (thaiRecipe) {
     return JSON.parse(thaiRecipe);
   } else {
@@ -30,7 +30,7 @@ const getCuisineRecipe = async (country) => {
       );
       const data = await response.json();
       console.log(data);
-      localStorage.setItem('thai', JSON.stringify(data));
+      localStorage.setItem(country, JSON.stringify(data));
       return data;
     } catch (error) {
       console.log(error);

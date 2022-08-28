@@ -1,13 +1,13 @@
 import React from 'react';
-import { GiNoodles,GiChopsticks } from 'react-icons/gi';
-import { FaPizzaSlice ,FaHamburger} from 'react-icons/fa';
+import { GiNoodles, GiChopsticks } from 'react-icons/gi';
+import { FaPizzaSlice, FaHamburger } from 'react-icons/fa';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 function Category() {
   return (
     <CategoryList>
-      <CategoryItem to="/">
+      <CategoryItem to="/italian-food">
         <FaPizzaSlice />
         <h4>Italian</h4>
       </CategoryItem>
@@ -15,13 +15,13 @@ function Category() {
         <GiNoodles />
         <h4>Thai</h4>
       </CategoryItem>
-      <CategoryItem to="/home">
+      <CategoryItem to="/american-food">
         <FaHamburger />
         <h4>American</h4>
       </CategoryItem>
-      <CategoryItem to="/home">
+      <CategoryItem to="/korean-food">
         <GiChopsticks />
-        <h4>Japanesee</h4>
+        <h4>Korean</h4>
       </CategoryItem>
     </CategoryList>
   );
