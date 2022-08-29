@@ -2,22 +2,22 @@ import React from 'react';
 import RecipeCard from './RecipeCard';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { getCuisineRecipe } from '../services/recipe-services';
 
 function RecipeList(props) {
   const [foodRecipes, setFoodRecipes] = useState([]);
 
   const recipeHandler = async () => {
-    const recipe = await getCuisineRecipe(props.cuisine);
+    const recipe = await props.recipeService(props.cuisine);
     setFoodRecipes(recipe.results);
   };
 
   useEffect(() => {
     recipeHandler();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.cuisine]);
   return (
     <div>
-      <Title>{props.title}</Title>
+      <Title>{props.title.toUpperCase()}</Title>
       <Wraper>
         {foodRecipes.map((recipe) => {
           return (
