@@ -2,16 +2,19 @@ import React from 'react';
 import RecipeCard from './RecipeCard';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { getCuisineRecipe } from '../services/recipe-services';
 
 function RecipeList(props) {
   const [foodRecipes, setFoodRecipes] = useState([]);
+
   const recipeHandler = async () => {
-    const recipe = await props.recipeService(props.country);
+    const recipe = await getCuisineRecipe(props.cuisine);
     setFoodRecipes(recipe.results);
   };
+
   useEffect(() => {
     recipeHandler();
-  }, [foodRecipes]);
+  }, [props.cuisine]);
   return (
     <div>
       <Title>{props.title}</Title>

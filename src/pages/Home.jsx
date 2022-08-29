@@ -7,7 +7,7 @@ function Home() {
   return (
     <div>
       <PopularRecipeList />
-      <RecipeList recipeService={getVeganRecipe} title="Vegan Picks" />
+      {/* <RecipeList recipeService={getVeganRecipe} title="Vegan Picks" /> */}
     </div>
   );
 }
