@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 function RecipeCard(props) {
   return (
-    <Card>
+    <Card to={`/detail/${props.id}`}>
       <Gradient />
       {props.children}
     </Card>
@@ -19,7 +20,7 @@ const Gradient = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 
-const Card = styled.div`
+const Card = styled(NavLink)`
   width: 21%;
   position: relative;
   margin-top: 10px;

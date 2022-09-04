@@ -5,20 +5,23 @@ import { useState, useEffect } from 'react';
 
 function RecipeList(props) {
   const [foodRecipes, setFoodRecipes] = useState([]);
+
   const recipeHandler = async () => {
-    const recipe = await props.recipeService(props.country);
+    const recipe = await props.recipeService(props.cuisine);
     setFoodRecipes(recipe.results);
   };
+
   useEffect(() => {
     recipeHandler();
-  }, [foodRecipes]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.cuisine]);
   return (
     <div>
-      <Title>{props.title}</Title>
+      <Title>{props.title.toUpperCase()}</Title>
       <Wraper>
         {foodRecipes.map((recipe) => {
           return (
-            <RecipeCard key={recipe.id}>
+            <RecipeCard key={recipe.id} id={recipe.id}>
               <h3>{recipe.title}</h3>
               <img src={recipe.image} alt={recipe.title} />
             </RecipeCard>
