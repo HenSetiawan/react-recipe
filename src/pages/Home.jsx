@@ -9,7 +9,7 @@ function Home() {
       <PopularRecipeList />
       <RecipeList
         title="Vegan"
-        cuisine={params.country}
+        cuisine="Vegan"
         recipeService={getVeganRecipe}
       />
     </div>
